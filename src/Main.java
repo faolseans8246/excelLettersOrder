@@ -2,28 +2,34 @@ import java.util.*;
 
 public class Main {
 
+    // Berilgan harf yordamida uning joylashuv o'rnini aniqlab berish qismi
     public int lengthOfLastWord(String s) {
 
         int len = s.length() - 1;
         int result = 0;
         int roomNumber = 26;
 
+
+        // Harflarni tahlil qilish qismi
         for (int i = 0; i < len; i ++) {
 
+            // Harf natijasini chiqarish
             result += (roomNumber * Math.pow(letterToNumber(s.charAt(i)), (len - i)));
 
         }
 
 
-
+    // Natijani foydalanuvchiga yuborish
         return result + letterToNumber(s.charAt(len));
 
     }
 
+    // Bazaviy harf pozitsiyasi
     public static int letterToNumber (char a) {
 
         int num = 0;
 
+        // Berilgan harf qismini tanlash qismi
         switch (a) {
             case 'A': num = 1; break;
             case 'B': num = 2; break;
@@ -54,6 +60,7 @@ public class Main {
             default: num = 0;
         }
 
+        // natijani tanlash
         return num;
 
     }
@@ -63,10 +70,12 @@ public class Main {
         Main mn = new Main();
         Scanner scan = new Scanner(System.in);
 
+        // Namunani kiritish
         System.out.print("Enter excel letter: ");
         String exel_column_latter = scan.nextLine();
 
 
+        // Natijani olish qismi
         int order_letter = mn.lengthOfLastWord(exel_column_latter);
         System.out.println("Your excel order: " + order_letter);
 
